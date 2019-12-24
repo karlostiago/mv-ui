@@ -1,1 +1,106 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #404C51;
+}
+
+label {
+    font-weight: bold;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1170px;
+}
+
+body .ui-table .ui-table-tbody > tr > td.text-center,
+body .ui-table .ui-table-thead > tr > th.text-center {
+    text-align: center;
+}
+
+body .ui-table .ui-table-tbody > tr > td.text-right,
+body .ui-table .ui-table-thead > tr > th.text-right {
+    text-align: right;
+}
+
+body .ui-table .ui-table-tbody > tr > td.text-left {
+    text-align: left;
+}
+
+body .ui-table .ui-table-thead > tr > th.text-left {
+    text-align: left;
+}
+
+body .ui-table .ui-table-thead > tr > th.text-right {
+    text-align: right;
+}
+
+body .ui-table .ui-table-thead > tr > th.text-center {
+    text-align: center;
+}
+
+.text-col-1 {
+    width: 80px;
+}
+
+.text-col-2 {
+    width: 160px;
+}
+
+.text-col-3 {
+    width: 240px;
+}
+
+.text-col-4 {
+    width: 320px;
+}
+
+.text-col-5 {
+    width: 400px;
+}
+
+.text-col-6 {
+    width: 480px;
+}
+
+.text-col-7 {
+    width: 560px;
+}
+
+.text-col-8 {
+    width: 640px;
+}
+
+.text-col-9 {
+    width: 720px;
+}
+
+.text-col-10 {
+    width: 800px;
+}
+
+.text-col-11 {
+    width: 880px;
+}
+
+.text-col-12 {
+    width: 960px;
+}
+
+body .ui-table .ui-table-thead > tr > th.col-action {
+    width: 100px;
+}
+
+body .ui-button:hover {
+    background: #116fbf;
+    border: 1px solid #116fbf;
+}
+
+body .ui-button {
+    margin: 2px!important;
+}
+
+body a:hover {
+    color: #fff;
+}
