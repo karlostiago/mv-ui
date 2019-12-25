@@ -17,5 +17,4 @@ export class ProfissionaisPesquisarComponent  {
         {id: '7', nome: 'Nome Profissional Teste 7', endereco: 'Endereço Teste 7', telefoneCelular: '8888-8888', telefoneFixo: '3333-3333'},
         {id: '8', nome: 'Nome Profissional Teste 8', endereco: 'Endereço Teste 8', telefoneCelular: '8888-8888', telefoneFixo: '3333-3333'},
     ];
-    
 }
