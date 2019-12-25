@@ -16,6 +16,6 @@ import { ProfissionaisCadastroComponent } from './profissionais-cadastro/profiss
     ButtonModule,
     TableModule
   ],
-  exports: [ProfissionaisPesquisarComponent]
+  exports: [ProfissionaisPesquisarComponent, ProfissionaisCadastroComponent]
 })
 export class ProfissionaisModule { }
