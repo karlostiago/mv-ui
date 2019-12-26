@@ -1,7 +1,7 @@
+import { Profissional } from './model/profissional';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,6 @@ export class ProfissionaisService {
     constructor(private httpClient: HttpClient) { }
 
     pesquisar() {
-      return this.httpClient.get(this.resource);
+      return this.httpClient.get<Profissional[]>(this.resource);
     }
 }

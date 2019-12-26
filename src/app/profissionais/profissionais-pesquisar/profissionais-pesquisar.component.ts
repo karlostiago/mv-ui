@@ -1,3 +1,4 @@
+import { Profissional } from './../model/profissional';
 import { ProfissionaisService } from './../profissionais.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,16 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfissionaisPesquisarComponent implements OnInit  {
 
-    profissionais = [ ];
+    profissionais: Profissional[ ];
 
     constructor(private profissionaisService: ProfissionaisService) { }
 
     ngOnInit() {
-        this.pesquisar();
-    }
-
-    pesquisar() {
         this.profissionaisService.pesquisar()
-        .subscribe(() => null);
+            .subscribe( profissional => this.profissionais = profissional );
     }
 }
