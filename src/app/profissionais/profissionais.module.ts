@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfissionaisPesquisarComponent } from './profissionais-pesquisar/profissionais-pesquisar.component';
 import { ProfissionaisCadastroComponent } from './profissionais-cadastro/profissionais-cadastro.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { ProfissionaisCadastroComponent } from './profissionais-cadastro/profiss
     CommonModule,
     InputTextModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    FormsModule
   ],
   exports: [ProfissionaisPesquisarComponent, ProfissionaisCadastroComponent]
 })

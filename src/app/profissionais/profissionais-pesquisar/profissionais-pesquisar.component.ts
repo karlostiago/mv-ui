@@ -17,4 +17,8 @@ export class ProfissionaisPesquisarComponent implements OnInit  {
         this.profissionaisService.pesquisar()
             .subscribe( profissional => this.profissionais = profissional );
     }
+
+    pesquisar() {
+        console.log('pesquisando resultados..');
+    }
 }

@@ -1,51 +1,53 @@
 <div class="container">
-    <div class="ui-g">
-        <div class="ui-g-12">
-            <h1>Profissionais</h1>
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <h1>Profissionais</h1>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+                <label for="nome">Nome do Profissional:</label>
+                <input type="text" name="nome" [(ngModel)]="nome" pInputText />
+            </div>
+
+            <div class="ui-g-12">
+                <button type="submit" pButton label="Pesquisar"></button>
+            </div>
         </div>
 
-        <div class="ui-g-12 ui-fluid">
-            <label for="nome">Nome do Profissional:</label>
-            <input type="text" pInputText />
-        </div>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <p-table [value]="profissionais">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="text-col-1 text-center">Codigo</th>
+                            <th class="text-col-5 text-center">Nome</th>
+                            <th class="text-col-4 text-center">Endereço</th>
+                            <th class="text-col-2 text-center">Telefone Celular</th>
+                            <th class="text-col-2 text-center">Telefone Fixo</th>
+                            <th class="col-action"></th>
+                        </tr>
+                    </ng-template>
 
-        <div class="ui-g-12">
-            <button type="submit" pButton label="Pesquisar"></button>
-        </div>
-    </div>
+                    <ng-template pTemplate="body" let-profissional>
+                        <tr>
+                            <td class="text-center">{{profissional.id}}</td>
+                            <td class="text-left">{{profissional.nome}}</td>
+                            <td class="text-left">{{profissional.endereco}}</td>
+                            <td class="text-center">{{profissional.telefoneCelular}}</td>
+                            <td class="text-center">{{profissional.telefoneFixo}}</td>
+                            <td class="text-center">
+                                <a pButton icon="fa fa-pencil"></a>
+                                <button pButton icon="fa fa-remove" class="text-danger"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
 
-    <div class="ui-g">
-        <div class="ui-g-12">
-            <p-table [value]="profissionais">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th class="text-col-1 text-center">Codigo</th>
-                        <th class="text-col-5 text-center">Nome</th>
-                        <th class="text-col-4 text-center">Endereço</th>
-                        <th class="text-col-2 text-center">Telefone Celular</th>
-                        <th class="text-col-2 text-center">Telefone Fixo</th>
-                        <th class="col-action"></th>
-                    </tr>
-                </ng-template>
-
-                <ng-template pTemplate="body" let-profissional>
-                    <tr>
-                        <td class="text-center">{{profissional.id}}</td>
-                        <td class="text-left">{{profissional.nome}}</td>
-                        <td class="text-left">{{profissional.endereco}}</td>
-                        <td class="text-center">{{profissional.telefoneCelular}}</td>
-                        <td class="text-center">{{profissional.telefoneFixo}}</td>
-                        <td class="text-center">
-                            <a pButton icon="fa fa-pencil"></a>
-                            <button pButton icon="fa fa-remove" class="text-danger"></button>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
+            <div class="ui-g-12">
+                <a  pButton label="Novo Profissional"></a>
+            </div>
         </div>
-
-        <div class="ui-g-12">
-            <a  pButton label="Novo Profissional"></a>
-        </div>
-    </div>
+    </form>
 </div>

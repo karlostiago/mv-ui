@@ -1,6 +1,7 @@
 import { Profissional } from './model/profissional';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 
 
 @Injectable({
@@ -13,6 +14,6 @@ export class ProfissionaisService {
     constructor(private httpClient: HttpClient) { }
 
     pesquisar() {
-      return this.httpClient.get<Profissional[]>(this.resource);
+        return this.httpClient.get<Profissional[]>(this.resource);
     }
 }
