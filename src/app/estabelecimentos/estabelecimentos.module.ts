@@ -6,6 +6,7 @@ import {InputMaskModule} from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TableModule } from 'primeng/table';
     InputMaskModule,
     InputTextModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    RouterModule
   ],
   exports: [EstabelecimentosCadastroComponent, EstabelecimentosPesquisarComponent]
 })

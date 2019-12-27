@@ -37,7 +37,7 @@
                             <td class="text-center">{{profissional.telefoneCelular}}</td>
                             <td class="text-center">{{profissional.telefoneFixo}}</td>
                             <td class="text-center">
-                                <a pButton icon="fa fa-pencil"></a>
+                                <a pButton icon="fa fa-pencil" [routerLink]="['/profissionais', profissional.id]"></a>
                                 <button pButton icon="fa fa-remove" class="text-danger"></button>
                             </td>
                         </tr>
@@ -46,7 +46,7 @@
             </div>
 
             <div class="ui-g-12">
-                <a  pButton label="Novo Profissional"></a>
+                <a  pButton label="Novo Profissional" routerLink="/profissionais/novo"></a>
             </div>
         </div>
     </form>

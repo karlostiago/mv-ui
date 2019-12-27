@@ -7,6 +7,7 @@ import { ProfissionaisPesquisarComponent } from './profissionais-pesquisar/profi
 import { ProfissionaisCadastroComponent } from './profissionais-cadastro/profissionais-cadastro.component';
 import { FormsModule } from '@angular/forms';
 import {InputMaskModule} from 'primeng/inputmask';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,7 +19,8 @@ import {InputMaskModule} from 'primeng/inputmask';
     ButtonModule,
     TableModule,
     FormsModule,
-    InputMaskModule
+    InputMaskModule,
+    RouterModule
   ],
   exports: [ProfissionaisPesquisarComponent, ProfissionaisCadastroComponent]
 })
