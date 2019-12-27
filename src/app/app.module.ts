@@ -1,3 +1,4 @@
+import { EstabelecimentosModule } from './estabelecimentos/estabelecimentos.module';
 import { ProfissionaisService } from './profissionais/profissionais.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavegacaoModule } from './navegacao/navegacao.module';
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     ProfissionaisModule,
+    EstabelecimentosModule,
     NavegacaoModule,
     HttpClientModule,
     FormsModule

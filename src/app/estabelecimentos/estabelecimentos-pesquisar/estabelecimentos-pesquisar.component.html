@@ -1,0 +1,53 @@
+<div class="container">
+    <form autocomplete="off">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <h1>Estabelecimentos</h1>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+                <label for="nome">Nome do Estabelecimento:</label>
+                <input type="text" name="nome" pInputText />
+            </div>
+
+            <div class="ui-g-12">
+                <button pButton label="Pesquisar" (click)="search()"></button>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <p-table [value]="estabelecimentos">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="text-col-1 text-center">Codigo</th>
+                            <th class="text-col-5 text-center">Nome</th>
+                            <th class="text-col-4 text-center">Endereço</th>
+                            <th class="text-col-2 text-center">Telefone Celular</th>
+                            <th class="text-col-2 text-center">Telefone Fixo</th>
+                            <th class="col-action"></th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-estabelecimento>
+                        <tr>
+                            <td class="text-center">{{estabelecimento.id}}</td>
+                            <td class="text-left">{{estabelecimento.nome}}</td>
+                            <td class="text-left">{{estabelecimento.endereco}}</td>
+                            <td class="text-center">{{estabelecimento.telefoneCelular}}</td>
+                            <td class="text-center">{{estabelecimento.telefoneFixo}}</td>
+                            <td class="text-center">
+                                <a pButton icon="fa fa-pencil"></a>
+                                <button pButton icon="fa fa-remove" class="text-danger"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <div class="ui-g-12">
+                <a  pButton label="Novo Estabelecimento"></a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -12,15 +12,11 @@ import { FormControl } from '@angular/forms';
 export class ProfissionaisPesquisarComponent implements OnInit  {
 
     profissionais: Profissional[ ];
-    formulario = new FormControl();
 
     constructor(private profissionaisService: ProfissionaisService) { }
 
     ngOnInit() {
         this.profissionaisService.pesquisar()
             .subscribe( profissional => this.profissionais = profissional );
-    }
-
-    search() {
     }
 }
