@@ -104,3 +104,11 @@ body .ui-button {
 body a:hover {
     color: #fff;
 }
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}

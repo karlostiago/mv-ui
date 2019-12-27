@@ -1,6 +1,8 @@
 import { Profissional } from './../model/profissional';
 import { ProfissionaisService } from './../profissionais.service';
 import { Component, OnInit } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-profissionais-pesquisar',
@@ -10,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProfissionaisPesquisarComponent implements OnInit  {
 
     profissionais: Profissional[ ];
+    formulario = new FormControl();
 
     constructor(private profissionaisService: ProfissionaisService) { }
 
@@ -18,7 +21,6 @@ export class ProfissionaisPesquisarComponent implements OnInit  {
             .subscribe( profissional => this.profissionais = profissional );
     }
 
-    pesquisar() {
-        console.log('pesquisando resultados..');
+    search() {
     }
 }

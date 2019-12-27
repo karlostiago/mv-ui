@@ -1,5 +1,5 @@
 <div class="container">
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <form autocomplete="off">
         <div class="ui-g">
             <div class="ui-g-12">
                 <h1>Profissionais</h1>
@@ -7,11 +7,11 @@
 
             <div class="ui-g-12 ui-fluid">
                 <label for="nome">Nome do Profissional:</label>
-                <input type="text" name="nome" [(ngModel)]="nome" pInputText />
+                <input type="text" name="nome" pInputText />
             </div>
 
             <div class="ui-g-12">
-                <button type="submit" pButton label="Pesquisar"></button>
+                <button pButton label="Pesquisar" (click)="search()"></button>
             </div>
         </div>
 

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ProfissionaisPesquisarComponent } from './profissionais-pesquisar/profissionais-pesquisar.component';
 import { ProfissionaisCadastroComponent } from './profissionais-cadastro/profissionais-cadastro.component';
 import { FormsModule } from '@angular/forms';
+import {InputMaskModule} from 'primeng/inputmask';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     InputTextModule,
     ButtonModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    InputMaskModule
   ],
   exports: [ProfissionaisPesquisarComponent, ProfissionaisCadastroComponent]
 })
