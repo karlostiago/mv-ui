@@ -7,6 +7,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { RouterModule } from '@angular/router';
     InputTextModule,
     ButtonModule,
     TableModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    TooltipModule
   ],
   exports: [EstabelecimentosCadastroComponent, EstabelecimentosPesquisarComponent]
 })

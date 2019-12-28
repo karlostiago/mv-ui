@@ -1,4 +1,4 @@
-export interface Profissional {
+export class Profissional {
     id: number;
     nome: string;
     endereco: string;

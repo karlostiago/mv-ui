@@ -1,5 +1,5 @@
 <div class="container">
-    <form autocomplete="off">
+    <form #estabelecimentoForm="ngForm" (ngSubmit)="pesquisarPorNome(estabelecimentoForm)">
         <div class="ui-g">
             <div class="ui-g-12">
                 <h1>Estabelecimentos</h1>
@@ -7,22 +7,22 @@
 
             <div class="ui-g-12 ui-fluid">
                 <label for="nome">Nome do Estabelecimento:</label>
-                <input type="text" name="nome" pInputText />
+                <input type="text" name="nome" pInputText ngModel />
             </div>
 
             <div class="ui-g-12">
-                <button pButton label="Pesquisar" (click)="search()"></button>
+                <button type="submit" pButton label="Pesquisar" ></button>
             </div>
         </div>
 
         <div class="ui-g">
             <div class="ui-g-12">
-                <p-table [value]="estabelecimentos">
+                <p-table [value]="estabelecimentos" [paginator]="true" [rows]="5" #tabela>
                     <ng-template pTemplate="header">
                         <tr>
                             <th class="text-col-1 text-center">Codigo</th>
                             <th class="text-col-5 text-center">Nome</th>
-                            <th class="text-col-4 text-center">Endereço</th>
+                            <th class="text-col-3 text-center">Endereço</th>
                             <th class="text-col-2 text-center">Telefone Celular</th>
                             <th class="text-col-2 text-center">Telefone Fixo</th>
                             <th class="col-action"></th>
@@ -38,7 +38,7 @@
                             <td class="text-center">{{estabelecimento.telefoneFixo}}</td>
                             <td class="text-center">
                                 <a pButton icon="fa fa-pencil"></a>
-                                <button pButton icon="fa fa-remove" class="text-danger"></button>
+                                <button pButton icon="fa fa-remove" pTooltip="Deletar" tooltipPosition="top" class="text-danger" (click)="delete(estabelecimento.id)"></button>
                             </td>
                         </tr>
                     </ng-template>

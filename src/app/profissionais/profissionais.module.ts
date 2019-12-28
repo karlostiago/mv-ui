@@ -20,7 +20,8 @@ import { RouterModule } from '@angular/router';
     TableModule,
     FormsModule,
     InputMaskModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [ProfissionaisPesquisarComponent, ProfissionaisCadastroComponent]
 })

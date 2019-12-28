@@ -1,4 +1,4 @@
-export interface Estabelecimento {
+export class Estabelecimento {
     id: number;
     nome: string;
     endereco: string;

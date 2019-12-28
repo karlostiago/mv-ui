@@ -1,8 +1,8 @@
+import { Estabelecimento } from './../../estabelecimentos/model/Estabelecimento';
 import { Profissional } from './../model/profissional';
 import { ProfissionaisService } from './../profissionais.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpParams } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profissionais-pesquisar',
@@ -18,5 +18,10 @@ export class ProfissionaisPesquisarComponent implements OnInit  {
     ngOnInit() {
         this.profissionaisService.pesquisar()
             .subscribe( profissional => this.profissionais = profissional );
+    }
+
+    pesquisarPorNome(form: NgForm) {
+        this.profissionaisService.pesquisarPorNome(form.value.nome)
+        .subscribe( profissional => this.profissionais = profissional );
     }
 }

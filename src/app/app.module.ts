@@ -1,18 +1,20 @@
+import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { ToastyModule } from 'ng2-toasty';
+
+import { AppComponent } from './app.component';
 import { EstabelecimentosCadastroComponent } from './estabelecimentos/estabelecimentos-cadastro/estabelecimentos-cadastro.component';
 import { EstabelecimentosPesquisarComponent } from './estabelecimentos/estabelecimentos-pesquisar/estabelecimentos-pesquisar.component';
 import { ProfissionaisCadastroComponent } from './profissionais/profissionais-cadastro/profissionais-cadastro.component';
 import { ProfissionaisPesquisarComponent } from './profissionais/profissionais-pesquisar/profissionais-pesquisar.component';
-import { Routes, RouterModule } from '@angular/router';
+import { NavegacaoModule } from './navegacao/navegacao.module';
 import { EstabelecimentosModule } from './estabelecimentos/estabelecimentos.module';
 import { ProfissionaisService } from './profissionais/profissionais.service';
-import { HttpClientModule } from '@angular/common/http';
-import { NavegacaoModule } from './navegacao/navegacao.module';
 import { ProfissionaisModule } from './profissionais/profissionais.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 
 const routers: Routes = [
     {path: 'profissionais', component: ProfissionaisPesquisarComponent},
@@ -32,8 +34,8 @@ const routers: Routes = [
     EstabelecimentosModule,
     NavegacaoModule,
     HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot(routers)
+    RouterModule.forRoot(routers),
+    ToastyModule.forRoot()
   ],
   providers: [ProfissionaisService],
   bootstrap: [AppComponent]

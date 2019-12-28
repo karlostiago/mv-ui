@@ -1,34 +1,36 @@
 <div class="container">
-    <div class="ui-g">
-        <div class="ui-g-12">
-            <h1>Novo Estabelecimento</h1>
+    <form method="post" #formCadastro="ngForm" (ngSubmit)="salvar()">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <h1>Novo Estabelecimento</h1>
+            </div>
+
+            <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid">
+                <label>Nome:</label>
+                <input type="text" pInputText [(ngModel)]="estabelecimento.nome" name="nome" required />
+            </div>
+
+            <div class="ui-g-12 ui-md-12 ui-lg-6 ui-fluid">
+                <label>Endereço:</label>
+                <input type="text" pInputText [(ngModel)]="estabelecimento.endereco" name="endereco" required />
+            </div>
+
+            <div class="ui-g-12 ui-md-12 ui-lg-3 ui-fluid">
+                <label>Telefone Fixo:</label>
+                <p-inputMask mask="(999) 9999-9999" [(ngModel)]="estabelecimento.telefoneFixo" name="telefoneFixo" aria-required="true" ></p-inputMask>
+            </div>
+
+            <div class="ui-g-12 ui-md-12 ui-lg-3 ui-fluid">
+                <label>Telefone Celular:</label>
+                <p-inputMask mask="(999) 9 9999-9999" [(ngModel)]="estabelecimento.telefoneCelular" name="telefoneCelular" ></p-inputMask>
+            </div>
         </div>
 
-        <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid">
-            <label>Nome:</label>
-            <input type="text" pInputText />
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <button pButton label="Salvar" [disabled]="formCadastro.invalid" type="submit" class="ui-button-success"></button>
+                <a routerLink="/estabelecimentos" class="pull-right">Voltar</a>
+            </div>
         </div>
-
-        <div class="ui-g-12 ui-md-12 ui-lg-6 ui-fluid">
-            <label>Endereço:</label>
-            <input type="text" pInputText />
-        </div>
-
-        <div class="ui-g-12 ui-md-12 ui-lg-3 ui-fluid">
-            <label>Telefone Fixo:</label>
-            <p-inputMask mask="(999) 9999-9999"></p-inputMask>
-        </div>
-
-        <div class="ui-g-12 ui-md-12 ui-lg-3 ui-fluid">
-            <label>Telefone Celular:</label>
-            <p-inputMask mask="(999) 9 9999-9999"></p-inputMask>
-        </div>
-    </div>
-
-    <div class="ui-g">
-        <div class="ui-g-12">
-            <button pButton label="Salvar" type="submit" class="ui-button-success"></button>
-            <a routerLink="/estabelecimentos" class="pull-right">Voltar</a>
-        </div>
-    </div>
+    </form>
 </div>
