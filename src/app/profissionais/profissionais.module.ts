@@ -8,7 +8,7 @@ import { ProfissionaisCadastroComponent } from './profissionais-cadastro/profiss
 import { FormsModule } from '@angular/forms';
 import {InputMaskModule} from 'primeng/inputmask';
 import { RouterModule } from '@angular/router';
-
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     InputMaskModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    TooltipModule
   ],
   exports: [ProfissionaisPesquisarComponent, ProfissionaisCadastroComponent]
 })
