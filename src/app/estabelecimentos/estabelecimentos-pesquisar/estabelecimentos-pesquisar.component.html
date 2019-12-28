@@ -37,7 +37,7 @@
                             <td class="text-center">{{estabelecimento.telefoneCelular}}</td>
                             <td class="text-center">{{estabelecimento.telefoneFixo}}</td>
                             <td class="text-center">
-                                <a pButton icon="fa fa-pencil"></a>
+                                <a pButton icon="fa fa-pencil" [routerLink]="['/estabelecimentos', estabelecimento.id]"></a>
                                 <button pButton icon="fa fa-remove" pTooltip="Deletar" tooltipPosition="top" class="text-danger" (click)="confirmarExclusao(estabelecimento.id)"></button>
                             </td>
                         </tr>

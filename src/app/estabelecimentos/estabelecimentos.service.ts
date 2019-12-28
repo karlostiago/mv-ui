@@ -25,6 +25,23 @@ export class EstabelecimentosService {
         return this.httpClient.get<Estabelecimento[]>(url);
     }
 
+    atualizar(estabelecimento: Estabelecimento): Observable<Estabelecimento> {
+        const url = 'http://localhost:8080/estabelecimentos';
+        return this.httpClient.put<Estabelecimento>(`${url}/${estabelecimento.id}`, estabelecimento)
+            .pipe(
+                map(data => data)
+            );
+    }
+
+    buscarPorCodigo(codigo: number): Observable<Estabelecimento> {
+        const url = 'http://localhost:8080/estabelecimentos';
+        return this.httpClient.get<Estabelecimento>(`${url}/${codigo}`)
+            .pipe(
+                map(data => data),
+                catchError(this.handleError)
+            );
+    }
+
     salvar(estabelecimento: Estabelecimento): Observable<Estabelecimento> {
         const body = JSON.stringify(estabelecimento);
         return this.httpClient.post<Estabelecimento>('http://localhost:8080/estabelecimentos/novo', body, this.httpOptions)

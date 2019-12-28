@@ -23,4 +23,8 @@ export class ProfissionaisPesquisarComponent implements OnInit  {
         this.profissionaisService.pesquisarPorNome(form.value.nome)
         .subscribe( profissional => this.profissionais = profissional );
     }
+
+    carregarLancamento(codigo: number) {
+
+    }
 }
