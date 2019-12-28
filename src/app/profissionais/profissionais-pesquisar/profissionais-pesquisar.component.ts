@@ -1,4 +1,3 @@
-import { Estabelecimento } from './../../estabelecimentos/model/Estabelecimento';
 import { Profissional } from './../model/profissional';
 import { ProfissionaisService } from './../profissionais.service';
 import { Component, OnInit } from '@angular/core';

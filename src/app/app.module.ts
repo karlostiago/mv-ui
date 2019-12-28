@@ -1,8 +1,12 @@
+import { EstabelecimentosService } from './estabelecimentos/estabelecimentos.service';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 import { ToastyModule } from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
@@ -21,7 +25,8 @@ const routers: Routes = [
     {path: 'profissionais/novo', component: ProfissionaisCadastroComponent},
     {path: 'profissionais/:id', component: ProfissionaisCadastroComponent},
     {path: 'estabelecimentos', component: EstabelecimentosPesquisarComponent},
-    {path: 'estabelecimentos/novo', component: EstabelecimentosCadastroComponent}
+    {path: 'estabelecimentos/novo', component: EstabelecimentosCadastroComponent},
+    {path: 'estabelecimentos/:id', component: EstabelecimentosCadastroComponent}
 ];
 
 @NgModule({
@@ -35,9 +40,15 @@ const routers: Routes = [
     NavegacaoModule,
     HttpClientModule,
     RouterModule.forRoot(routers),
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+    ConfirmDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [ProfissionaisService],
+  providers: [
+    EstabelecimentosService,
+    ProfissionaisService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

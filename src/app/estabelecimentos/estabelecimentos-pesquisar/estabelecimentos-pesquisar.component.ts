@@ -1,3 +1,4 @@
+import { ConfirmationService } from 'primeng/api';
 import { Estabelecimento } from './../model/Estabelecimento';
 import { EstabelecimentosService } from './../estabelecimentos.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -16,6 +17,7 @@ export class EstabelecimentosPesquisarComponent implements OnInit {
 
     constructor(
         private estabelecimentosService: EstabelecimentosService,
+        private confirmation: ConfirmationService,
         private toastyService: ToastyService
     ) { }
 
@@ -31,6 +33,17 @@ export class EstabelecimentosPesquisarComponent implements OnInit {
     pesquisarPorNome(form: NgForm) {
         this.estabelecimentosService.pesquisarPorNome(form.value.nome)
         .subscribe( estabelecimento => this.estabelecimentos = estabelecimento );
+    }
+
+    confirmarExclusao(codigo: number) {
+        this.confirmation.confirm({
+            message: 'Deseja excluir o registro de código ' + codigo + ' ?',
+            header: 'Confirmar exclusão',
+            icon: 'fa fa-question-circle',
+            accept: () => {
+                this.delete(codigo);
+            }
+        });
     }
 
     delete(codigo: number): void {

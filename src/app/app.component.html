@@ -2,3 +2,10 @@
 <router-outlet></router-outlet>
 <ng2-toasty></ng2-toasty>
 
+<p-confirmDialog #confirmar>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="Não" (click)="confirmar.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Sim" (click)="confirmar.accept()"></button>
+    </p-footer>
+</p-confirmDialog>
+
