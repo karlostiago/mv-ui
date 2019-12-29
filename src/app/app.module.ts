@@ -1,3 +1,5 @@
+import { VinculosModule } from './vinculos/vinculos.module';
+import { VinculosPesquisarComponent } from './vinculos/vinculos-pesquisar/vinculos-pesquisar.component';
 import { EstabelecimentosService } from './estabelecimentos/estabelecimentos.service';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +28,8 @@ const routers: Routes = [
     {path: 'profissionais/:id', component: ProfissionaisCadastroComponent},
     {path: 'estabelecimentos', component: EstabelecimentosPesquisarComponent},
     {path: 'estabelecimentos/novo', component: EstabelecimentosCadastroComponent},
-    {path: 'estabelecimentos/:id', component: EstabelecimentosCadastroComponent}
+    {path: 'estabelecimentos/:id', component: EstabelecimentosCadastroComponent},
+    {path: 'vinculos', component: VinculosPesquisarComponent}
 ];
 
 @NgModule({
@@ -42,7 +45,8 @@ const routers: Routes = [
     RouterModule.forRoot(routers),
     ToastyModule.forRoot(),
     ConfirmDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    VinculosModule
   ],
   providers: [
     EstabelecimentosService,

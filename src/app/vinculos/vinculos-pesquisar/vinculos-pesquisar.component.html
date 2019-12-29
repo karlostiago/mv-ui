@@ -1,1 +1,49 @@
-<p>vinculos-pesquisar works!</p>
+<div class="container">
+    <form action="#">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <h1>Vincular</h1>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+                <label for="nome">Nome do Profissional:</label>
+                <input type="text" name="nome" pInputText ngModel />
+            </div>
+
+            <div class="ui-g-12">
+                <button type="submit" pButton label="Pesquisar"></button>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <p-table [value]="vinculos" [paginator]="true" [rows]="5" #tabela>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="text-col-1 text-center">Codigo</th>
+                            <th class="text-col-5 text-center">Profissional</th>
+                            <th class="text-col-5 text-center">Estabelecimento</th>
+                            <th class="col-action"></th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-vinculo>
+                        <tr>
+                            <td class="text-center">{{vinculo.id}}</td>
+                            <td class="text-center">{{vinculo.nomeProfissional}}</td>
+                            <td class="text-center">{{vinculo.nomeEstabelecimento}}</td>
+                            <td class="text-center">
+                                <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/vinculos', vinculo.id]"></a>
+                                <button pButton icon="fa fa-remove" pTooltip="Deletar" tooltipPosition="top" class="text-danger" (click)="confirmarExclusao(vinculo.id)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <div class="ui-g-12">
+                <a  pButton label="Vincular" routerLink="/vinculos/novo"></a>
+            </div>
+        </div>
+    </form>
+</div>

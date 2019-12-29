@@ -21,7 +21,6 @@ import { TooltipModule } from 'primeng/tooltip';
     FormsModule,
     InputMaskModule,
     RouterModule,
-    FormsModule,
     TooltipModule
   ],
   exports: [ProfissionaisPesquisarComponent, ProfissionaisCadastroComponent]
