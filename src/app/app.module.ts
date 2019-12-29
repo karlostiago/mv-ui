@@ -1,3 +1,5 @@
+import { VinculosService } from './vinculos/vinculos.service';
+import { VinculosCadastroComponent } from './vinculos/vinculos-cadastro/vinculos-cadastro.component';
 import { VinculosModule } from './vinculos/vinculos.module';
 import { VinculosPesquisarComponent } from './vinculos/vinculos-pesquisar/vinculos-pesquisar.component';
 import { EstabelecimentosService } from './estabelecimentos/estabelecimentos.service';
@@ -29,7 +31,9 @@ const routers: Routes = [
     {path: 'estabelecimentos', component: EstabelecimentosPesquisarComponent},
     {path: 'estabelecimentos/novo', component: EstabelecimentosCadastroComponent},
     {path: 'estabelecimentos/:id', component: EstabelecimentosCadastroComponent},
-    {path: 'vinculos', component: VinculosPesquisarComponent}
+    {path: 'vinculos', component: VinculosPesquisarComponent},
+    {path: 'vinculos/novo', component: VinculosCadastroComponent},
+    {path: 'vinculos/:id', component: VinculosCadastroComponent},
 ];
 
 @NgModule({
@@ -51,6 +55,7 @@ const routers: Routes = [
   providers: [
     EstabelecimentosService,
     ProfissionaisService,
+    VinculosService,
     ConfirmationService
   ],
   bootstrap: [AppComponent]

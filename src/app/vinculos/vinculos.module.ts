@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { VinculosCadastroComponent } from './vinculos-cadastro/vinculos-cadastro.component';
 import { VinculosPesquisarComponent } from './vinculos-pesquisar/vinculos-pesquisar.component';
 import { RouterModule } from '@angular/router';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -20,8 +21,9 @@ import { RouterModule } from '@angular/router';
     TableModule,
     FormsModule,
     RouterModule,
-    TooltipModule
+    TooltipModule,
+    DialogModule
   ],
-  exports: [VinculosPesquisarComponent]
+  exports: [VinculosPesquisarComponent, VinculosCadastroComponent]
 })
 export class VinculosModule { }

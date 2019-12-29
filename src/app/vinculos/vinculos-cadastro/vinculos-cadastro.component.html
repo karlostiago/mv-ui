@@ -1,1 +1,76 @@
-<p>vinculos-cadastro works!</p>
+<div class="container">
+    <form #formCadastro="ngForm">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <h1>Novo Vinculo</h1>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <p-table [value]="profissionais" [paginator]="true" [rows]="5" #tabela>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="text-col-1 text-center">Codigo</th>
+                            <th class="text-col-5 text-center">Profissional</th>
+                            <th class="text-col-1 text-center">Ações</th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-profissional>
+                        <tr>
+                            <td class="text-center">{{profissional.id}}</td>
+                            <td class="text-center">{{profissional.nome}}</td>
+                            <td class="text-center">
+                                <button (click)="showModal(profissional)" type="button" pButton icon="fa fa-plus" label="Selecionar" pTooltip="Vincular" tooltipPosition="top" class="text-danger"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </form>
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <button pButton label="Salvar" (click)="salvar()" [disabled]="formCadastro.invalid" type="submit" class="ui-button-success"></button>
+            <a routerLink="/vinculos" class="pull-right">Voltar</a>
+        </div>
+    </div>
+
+    <p-dialog header="{{profissionalSelecionado.nome}}" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '850px', minWidth: '400px'}">
+        <div class="container">
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <h1>Estabelecimentos</h1>
+                </div>
+            </div>
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <form>
+                        <p-table [value]="estabelecimentos" [paginator]="true" [rows]="5" #tabela>
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th class="text-col-1 text-center">Codigo</th>
+                                    <th class="text-col-5 text-center">Nome</th>
+                                    <th class="col-action"></th>
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-estabelecimento>
+                                <tr>
+                                    <td class="text-center">{{estabelecimento.id}}</td>
+                                    <td class="text-left">{{estabelecimento.nome}}</td>
+                                    <td class="text-center">
+                                        <button pButton icon="fa fa-plus" pTooltip="Adicionar" tooltipPosition="top" class="text-success" (click)="confirmarExclusao(estabelecimento.id)"></button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+</div>
