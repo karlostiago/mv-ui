@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post" #formCadastro="ngForm" (ngSubmit)="salvar()">
+    <form method="post" #formCadastro="ngForm">
         <div class="ui-g">
             <div class="ui-g-12">
                 <h1> {{ editando ? 'Editando' : 'Novo' }} Estabelecimento</h1>
@@ -10,27 +10,65 @@
                 <input type="text" pInputText [(ngModel)]="estabelecimento.nome" name="nome" required />
             </div>
 
-            <div class="ui-g-12 ui-md-12 ui-lg-6 ui-fluid">
+            <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid">
                 <label>Endereço:</label>
                 <input type="text" pInputText [(ngModel)]="estabelecimento.endereco" name="endereco" required />
             </div>
+        </div>
+    </form>
 
-            <div class="ui-g-12 ui-md-12 ui-lg-3 ui-fluid">
-                <label>Telefone Fixo:</label>
-                <p-inputMask mask="(999) 9999-9999" [(ngModel)]="estabelecimento.telefoneFixo" name="telefoneFixo" aria-required="true" ></p-inputMask>
+    <form #formCadTelefone="ngForm">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <h1>Telefones</h1>
             </div>
 
-            <div class="ui-g-12 ui-md-12 ui-lg-3 ui-fluid">
-                <label>Telefone Celular:</label>
-                <p-inputMask mask="(999) 9 9999-9999" [(ngModel)]="estabelecimento.telefoneCelular" name="telefoneCelular" ></p-inputMask>
+            <div class="ui-g-1 ui-md-1 ui-lg-1 ui-fluid">
+                <label>DDD:</label>
+                <p-inputMask mask="(999)" [(ngModel)]="telefone.ddd" name="ddd" required="true" ></p-inputMask>
+            </div>
+
+            <div class="ui-g-4 ui-md-4 ui-lg-4 ui-fluid">
+                <label>Número:</label>
+                <p-inputMask mask="9999-9999" required="true" characterPattern="[0-9]" [(ngModel)]="telefone.numero" name="numero"></p-inputMask>
+            </div>
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <button pButton label="Incluir" (click)=incluirTelefone(formCadTelefone) style="margin-top: 17px!important;" [disabled]="formCadTelefone.invalid" type="submit" class="ui-button-success"></button>
+                </div>
             </div>
         </div>
 
         <div class="ui-g">
             <div class="ui-g-12">
-                <button pButton label="Salvar" [disabled]="formCadastro.invalid" type="submit" class="ui-button-success"></button>
-                <a routerLink="/estabelecimentos" class="pull-right">Voltar</a>
+                <p-table [value]="estabelecimento.telefones" [paginator]="true" [rows]="5">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="text-col-1 text-center">DDD</th>
+                            <th class="text-col-3 text-center">Número</th>
+                            <th class="col-action"></th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-telefone>
+                        <tr>
+                            <td class="text-center">{{telefone.ddd}}</td>
+                            <td class="text-center">{{telefone.numero}}</td>
+                            <td class="text-center">
+                                <button pButton icon="fa fa-remove" pTooltip="Deletar" tooltipPosition="top" class="text-danger" (click)="removerTelefone(telefone)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
             </div>
         </div>
     </form>
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <button pButton label="Salvar" (click)="salvar()" [disabled]="formCadastro.invalid" type="submit" class="ui-button-success"></button>
+            <a routerLink="/estabelecimentos" class="pull-right">Voltar</a>
+        </div>
+    </div>
 </div>

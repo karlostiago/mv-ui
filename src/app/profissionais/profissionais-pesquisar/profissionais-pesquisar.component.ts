@@ -1,5 +1,5 @@
 import { ConfirmationService } from 'primeng/api';
-import { Profissional } from './../model/profissional';
+import { Profissional } from '../../model/profissional';
 import { ProfissionaisService } from './../profissionais.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';

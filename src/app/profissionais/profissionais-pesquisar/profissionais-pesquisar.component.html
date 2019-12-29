@@ -22,9 +22,7 @@
                         <tr>
                             <th class="text-col-1 text-center">Codigo</th>
                             <th class="text-col-5 text-center">Nome</th>
-                            <th class="text-col-3 text-center">Endereço</th>
-                            <th class="text-col-2 text-center">Telefone Celular</th>
-                            <th class="text-col-2 text-center">Telefone Fixo</th>
+                            <th class="text-col-5 text-center">Endereço</th>
                             <th class="col-action"></th>
                         </tr>
                     </ng-template>
@@ -34,8 +32,6 @@
                             <td class="text-center">{{profissional.id}}</td>
                             <td class="text-left">{{profissional.nome}}</td>
                             <td class="text-left">{{profissional.endereco}}</td>
-                            <td class="text-center">{{profissional.telefoneCelular}}</td>
-                            <td class="text-center">{{profissional.telefoneFixo}}</td>
                             <td class="text-center">
                                 <a pButton icon="fa fa-pencil" [routerLink]="['/profissionais', profissional.id]"></a>
                                 <button pButton icon="fa fa-remove" pTooltip="Deletar" tooltipPosition="top" class="text-danger" (click)="confirmarExclusao(profissional.id)"></button>

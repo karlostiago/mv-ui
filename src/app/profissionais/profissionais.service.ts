@@ -1,4 +1,4 @@
-import { Profissional } from './model/profissional';
+import { Profissional } from '../model/profissional';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';

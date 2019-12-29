@@ -1,5 +1,5 @@
+import { Estabelecimento } from '../../model/Estabelecimento';
 import { ConfirmationService } from 'primeng/api';
-import { Estabelecimento } from './../model/Estabelecimento';
 import { EstabelecimentosService } from './../estabelecimentos.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';

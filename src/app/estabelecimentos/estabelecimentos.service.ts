@@ -1,4 +1,4 @@
-import { Estabelecimento } from './model/Estabelecimento';
+import { Estabelecimento } from '../model/Estabelecimento';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, retry, map } from 'rxjs/operators';

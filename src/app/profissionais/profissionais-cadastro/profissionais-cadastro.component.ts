@@ -1,3 +1,6 @@
+import { Profissional } from './../../model/profissional';
+import { Telefone } from './../../model/telefone';
+import { NgForm } from '@angular/forms';
 import { ProfissionaisService } from './../profissionais.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +13,9 @@ import { ToastyService } from 'ng2-toasty';
 })
 export class ProfissionaisCadastroComponent implements OnInit {
 
-    profissional: any;
+    profissional: Profissional = new Profissional();
+    telefone: Telefone = new Telefone();
+
     constructor(
         private route: ActivatedRoute,
         private profissionaisService: ProfissionaisService,
@@ -23,8 +28,6 @@ export class ProfissionaisCadastroComponent implements OnInit {
         if (id) {
             this.carregarProfissional(id);
         }
-
-        this.profissional = {};
     }
 
     get editando() {
@@ -62,8 +65,23 @@ export class ProfissionaisCadastroComponent implements OnInit {
     adicionarProfissional() {
         this.profissionaisService.salvar(this.profissional)
         .subscribe(() => {
-            this.profissional = {};
+            this.profissional = new Profissional();
             this.toastyService.success('Profissional salvo com sucesso.');
         });
+    }
+
+    incluirTelefone(form: NgForm) {
+        if (this.profissional) {
+            const telefone: Telefone = form.value;
+            this.profissional.telefones.push(telefone);
+            this.toastyService.success('Telefone incluído com sucesso.');
+            form.reset();
+        }
+    }
+
+    removerTelefone(telefone: Telefone) {
+        const index = this.profissional.telefones.indexOf(telefone);
+        this.profissional.telefones.splice(index, 1);
+        this.toastyService.success('Telefone removido com sucesso.');
     }
 }
