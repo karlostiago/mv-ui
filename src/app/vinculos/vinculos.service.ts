@@ -38,6 +38,14 @@ export class VinculosService {
             );
     }
 
+    atualizar(profissional: Profissional): Observable<Vinculo> {
+        const url = 'http://localhost:8080/vinculos';
+        return this.httpClient.put<Vinculo>(`${url}/${profissional.id}`, profissional)
+            .pipe(
+                map(data => data)
+            );
+    }
+
     // pegue da documentacao
     private handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
