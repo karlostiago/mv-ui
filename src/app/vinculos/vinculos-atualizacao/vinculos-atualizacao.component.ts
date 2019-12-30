@@ -61,13 +61,7 @@ export class VinculosAtualizacaoComponent implements OnInit {
             index++;
         }
 
-        index = 0;
-        for (const vinc of this.vinculos) {
-            if (vinc.nomeEstabelecimento === this.vinculoSelecionado.nomeEstabelecimento) {
-                this.vinculos.splice(index, 1);
-            }
-            index++;
-        }
+        this.vinculos = [];
 
         this.vinculosService.atualizar(this.profissionalSelecionado)
         .subscribe(() => {
