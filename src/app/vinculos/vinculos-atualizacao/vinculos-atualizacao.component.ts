@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ConfirmationService } from 'primeng/api';
+import { VinculosService } from './../vinculos.service';
+import { Vinculo } from './../../model/vinculo';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-vinculos-atualizacao',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VinculosAtualizacaoComponent implements OnInit {
 
-  constructor() { }
+    vinculos: Vinculo[];
+    @ViewChild('tabela', null) tabela;
 
-  ngOnInit() {
-  }
+    constructor(
+        private vinculosService: VinculosService,
+        private confirmation: ConfirmationService,
+        private toastyService: ToastyService
+    ) { }
+
+    ngOnInit() {
+        this.pesquisarTodos();
+    }
+
+    private pesquisarTodos() {
+        this.vinculosService.pesquisar()
+        .subscribe( vinculo => this.vinculos = vinculo );
+    }
 
 }

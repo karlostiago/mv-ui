@@ -22,7 +22,7 @@ import { NavegacaoModule } from './navegacao/navegacao.module';
 import { EstabelecimentosModule } from './estabelecimentos/estabelecimentos.module';
 import { ProfissionaisService } from './profissionais/profissionais.service';
 import { ProfissionaisModule } from './profissionais/profissionais.module';
-import { VinculosAtualizacaoComponent } from './vinclos/vinculos-atualizacao/vinculos-atualizacao.component';
+import { VinculosAtualizacaoComponent } from './vinculos/vinculos-atualizacao/vinculos-atualizacao.component';
 
 
 const routers: Routes = [
@@ -34,13 +34,12 @@ const routers: Routes = [
     {path: 'estabelecimentos/:id', component: EstabelecimentosCadastroComponent},
     {path: 'vinculos', component: VinculosPesquisarComponent},
     {path: 'vinculos/novo', component: VinculosCadastroComponent},
-    {path: 'vinculos/:id', component: VinculosCadastroComponent},
+    {path: 'vinculos/:id', component: VinculosAtualizacaoComponent},
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    VinculosAtualizacaoComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

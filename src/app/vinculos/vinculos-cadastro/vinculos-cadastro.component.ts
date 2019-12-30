@@ -32,10 +32,6 @@ export class VinculosCadastroComponent implements OnInit {
         this.todosProfissionais();
     }
 
-    get editando() {
-        return Boolean(this.vinculoSelecionado.id);
-    }
-
     salvar() {
         this.vinculosService.salvar(this.profissionalSelecionado)
         .subscribe(() => {
