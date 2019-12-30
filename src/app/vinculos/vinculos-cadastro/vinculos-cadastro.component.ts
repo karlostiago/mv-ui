@@ -1,3 +1,4 @@
+import { Vinculo } from './../../model/vinculo';
 import { VinculosService } from './../vinculos.service';
 import { EstabelecimentosService } from './../../estabelecimentos/estabelecimentos.service';
 import { ConfirmationService } from 'primeng/api';
@@ -17,6 +18,7 @@ export class VinculosCadastroComponent implements OnInit {
     profissionais: Profissional[ ];
     estabelecimentos: Estabelecimento[ ];
     profissionalSelecionado: Profissional = new Profissional();
+    vinculoSelecionado: Vinculo = new Vinculo();
     display: boolean = false;
     constructor(
         private estabelecimentosService: EstabelecimentosService,
@@ -28,6 +30,10 @@ export class VinculosCadastroComponent implements OnInit {
 
     ngOnInit() {
         this.todosProfissionais();
+    }
+
+    get editando() {
+        return Boolean(this.vinculoSelecionado.id);
     }
 
     salvar() {

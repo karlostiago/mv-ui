@@ -22,6 +22,7 @@ import { NavegacaoModule } from './navegacao/navegacao.module';
 import { EstabelecimentosModule } from './estabelecimentos/estabelecimentos.module';
 import { ProfissionaisService } from './profissionais/profissionais.service';
 import { ProfissionaisModule } from './profissionais/profissionais.module';
+import { VinculosAtualizacaoComponent } from './vinclos/vinculos-atualizacao/vinculos-atualizacao.component';
 
 
 const routers: Routes = [
@@ -38,7 +39,8 @@ const routers: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VinculosAtualizacaoComponent
   ],
   imports: [
     BrowserModule,
