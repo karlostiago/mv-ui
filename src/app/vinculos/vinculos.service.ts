@@ -1,4 +1,5 @@
-import { catchError, map } from 'rxjs/operators';
+import { Profissional } from './../model/profissional';
+import { catchError, map, retry } from 'rxjs/operators';
 import { Vinculo } from './../model/vinculo';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -24,6 +25,15 @@ export class VinculosService {
         return this.httpClient.delete(`${url}/${codigo}`)
             .pipe(
                 map(vinculoSalvo => vinculoSalvo),
+                catchError(this.handleError)
+            );
+    }
+
+    salvar(profissional: Profissional): Observable<Profissional> {
+        const body = JSON.stringify(profissional);
+        return this.httpClient.post<Profissional>('http://localhost:8080/vinculos/novo', body, this.httpOptions)
+            .pipe(
+                retry(2),
                 catchError(this.handleError)
             );
     }

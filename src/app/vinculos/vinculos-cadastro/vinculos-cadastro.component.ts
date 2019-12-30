@@ -1,3 +1,4 @@
+import { VinculosService } from './../vinculos.service';
 import { EstabelecimentosService } from './../../estabelecimentos/estabelecimentos.service';
 import { ConfirmationService } from 'primeng/api';
 import { ProfissionaisService } from './../../profissionais/profissionais.service';
@@ -21,11 +22,20 @@ export class VinculosCadastroComponent implements OnInit {
         private estabelecimentosService: EstabelecimentosService,
         private profissionaisService: ProfissionaisService,
         private confirmation: ConfirmationService,
+        private vinculosService: VinculosService,
         private toastyService: ToastyService
     ) { }
 
     ngOnInit() {
         this.todosProfissionais();
+    }
+
+    salvar() {
+        this.vinculosService.salvar(this.profissionalSelecionado)
+        .subscribe(() => {
+            this.profissionalSelecionado = new Profissional();
+            this.toastyService.success('Vinculo realizado salvo com sucesso.');
+        });
     }
 
     private todosProfissionais() {
@@ -39,8 +49,22 @@ export class VinculosCadastroComponent implements OnInit {
     }
 
     showModal(profissional: Profissional) {
+
+        if (profissional.estabelecimentos === null) {
+            profissional.estabelecimentos = [];
+        }
+
         this.profissionalSelecionado = profissional;
         this.todosEstabelecimentos();
         this.display = true;
+    }
+
+    incluirEstabelecimento(estabelecimento: Estabelecimento) {
+        this.profissionalSelecionado.estabelecimentos.push(estabelecimento);
+
+        const index = this.estabelecimentos.indexOf(estabelecimento);
+        this.estabelecimentos.splice(index, 1);
+
+        this.toastyService.success('Estabelecimento incluido com sucesso.');
     }
 }
