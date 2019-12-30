@@ -1,3 +1,7 @@
+import { VinculosService } from './vinculos/vinculos.service';
+import { VinculosCadastroComponent } from './vinculos/vinculos-cadastro/vinculos-cadastro.component';
+import { VinculosModule } from './vinculos/vinculos.module';
+import { VinculosPesquisarComponent } from './vinculos/vinculos-pesquisar/vinculos-pesquisar.component';
 import { EstabelecimentosService } from './estabelecimentos/estabelecimentos.service';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +22,7 @@ import { NavegacaoModule } from './navegacao/navegacao.module';
 import { EstabelecimentosModule } from './estabelecimentos/estabelecimentos.module';
 import { ProfissionaisService } from './profissionais/profissionais.service';
 import { ProfissionaisModule } from './profissionais/profissionais.module';
+import { VinculosAtualizacaoComponent } from './vinculos/vinculos-atualizacao/vinculos-atualizacao.component';
 
 
 const routers: Routes = [
@@ -26,7 +31,10 @@ const routers: Routes = [
     {path: 'profissionais/:id', component: ProfissionaisCadastroComponent},
     {path: 'estabelecimentos', component: EstabelecimentosPesquisarComponent},
     {path: 'estabelecimentos/novo', component: EstabelecimentosCadastroComponent},
-    {path: 'estabelecimentos/:id', component: EstabelecimentosCadastroComponent}
+    {path: 'estabelecimentos/:id', component: EstabelecimentosCadastroComponent},
+    {path: 'vinculos', component: VinculosPesquisarComponent},
+    {path: 'vinculos/novo', component: VinculosCadastroComponent},
+    {path: 'vinculos/:id', component: VinculosAtualizacaoComponent},
 ];
 
 @NgModule({
@@ -42,11 +50,13 @@ const routers: Routes = [
     RouterModule.forRoot(routers),
     ToastyModule.forRoot(),
     ConfirmDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    VinculosModule
   ],
   providers: [
     EstabelecimentosService,
     ProfissionaisService,
+    VinculosService,
     ConfirmationService
   ],
   bootstrap: [AppComponent]
