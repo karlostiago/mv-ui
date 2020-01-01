@@ -1,6 +1,13 @@
 <nav class="navbar">
     <div class="container">
         <div class="ui-g">
+            <img src="/assets/logo.png" class="navbar-logo-desktop" alt="" width="163" height="50">
+            <ul class="navbar-menu-desktop">
+                <li class="navbar-menu-item"><a routerLink="/estabelecimentos">Estabelecimentos</a></li>
+                <li class="navbar-menu-item"><a routerLink="/profissionais">Profissionais</a></li>
+                <li class="navbar-menu-item"><a routerLink="/vinculos" >Vincular</a></li>
+            </ul>
+
             <div class="ui-g-12">
                 <a href="javascript:;" class="navbar-toggle" (click)="exibir = !exibir">
                     <i class="fa fa-bars"></i>
@@ -9,10 +16,20 @@
         </div>
     </div>
 
-    <ul class="navbar-menu" [hidden]="!exibir">
-        <li class="navbar-menu-item-principal">Menu Principal</li>
+    <ul class="navbar-menu-mobile" [hidden]="!exibir">
+        <li class="navbar-menu-item selected">Menu Principal</li>
         <li class="navbar-menu-item"><a routerLink="/estabelecimentos">Estabelecimentos</a></li>
         <li class="navbar-menu-item"><a routerLink="/profissionais">Profissionais</a></li>
         <li class="navbar-menu-item"><a routerLink="/vinculos" >Vincular</a></li>
     </ul>
 </nav>
+
+<footer class="footer">
+    <div class="ui-g">
+        <div class="ui-g-4">
+            <div class="pull-right">
+                Última atualização.: 01/01/2020 15h12min
+            </div>
+        </div>
+    </div>
+</footer>

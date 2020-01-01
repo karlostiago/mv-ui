@@ -1,42 +1,96 @@
 .navbar {
-    background-color: #104e70;
+    background-color: #ffffff;
     padding: 10px 0;
+    border-bottom: 1px solid #dadada;
 }
 
 .navbar-toggle {
-    color: #fff;
+    color: #928a8a;
+    display: none;
 }
 
-.navbar-menu {
-    background-color: rgb(7, 106, 155);
-    position: fixed;
-    padding: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9998;
-    width: 210px;
-    margin: 0;
+.navbar-menu-desktop {
     list-style: none;
-}
-
-.navbar-menu-item-principal {
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 15px;
-    border-bottom: 1px solid lightgray;
-    margin-bottom: 15px;
+    display: inline-flex;
+    height: 0;
 }
 
 .navbar-menu-item {
-     padding: 15px;
+    margin-left: 15px;
 }
 
 .navbar-menu-item a {
-    color: #fff;
+    color: #928a8a;
+    position: relative;
+    top: 10px;
 }
 
 .navbar-menu-item a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
+
+@media (min-width: 861px) {
+    .navbar-menu-mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 860px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu-desktop {
+        display: none;
+    }
+
+    .navbar-logo-desktop {
+        display: none;
+    }
+
+    .navbar-menu-mobile {
+        background-color: #928a8a;
+        position: fixed;
+        padding: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9998;
+        width: 210px;
+        margin: 0;
+        list-style: none;
+    }
+
+    .navbar-menu-item.selected {
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 15px;
+        border-bottom: 1px solid lightgray;
+        margin-bottom: 15px;
+    }
+
+    .navbar-menu-item {
+         padding: 15px;
+    }
+
+    .navbar-menu-item a {
+        color: #fff;
+    }
+
+    .navbar-menu-item a:hover {
+        text-decoration: underline;
+    }
+}
+
+.footer {
+    background-color: #9a9a9a;
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+    bottom: 0px;
+    font-size: 12px;
+    color: #fff;
+}
+
+
