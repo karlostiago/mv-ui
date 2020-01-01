@@ -5,4 +5,6 @@ export class Vinculo {
     idProfissional: number;
     nomeProfissional: string;
     nomeEstabelecimento: string;
+    profissional: Profissional = new Profissional();
+    estabelecimento: Estabelecimento = new Estabelecimento();
 }

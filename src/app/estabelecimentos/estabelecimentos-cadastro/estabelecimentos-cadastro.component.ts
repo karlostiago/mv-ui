@@ -15,6 +15,7 @@ export class EstabelecimentosCadastroComponent implements OnInit {
 
     estabelecimento: Estabelecimento = new Estabelecimento();
     telefone: Telefone = new Telefone();
+    campoValido = true;
 
     constructor(
         private estabelecimentosService: EstabelecimentosService,
@@ -42,11 +43,13 @@ export class EstabelecimentosCadastroComponent implements OnInit {
     }
 
     salvar() {
-        if (this.editando) {
-            this.atualizarEstabelecimento(this.estabelecimento.id);
-        } else {
-            console.log('salvando...');
-            this.adicionarEstabelecimento();
+        this.validador();
+        if(this.campoValido) {
+            if (this.editando) {
+                this.atualizarEstabelecimento(this.estabelecimento.id);
+            } else {
+                this.adicionarEstabelecimento();
+            }
         }
     }
 
@@ -64,11 +67,38 @@ export class EstabelecimentosCadastroComponent implements OnInit {
     }
 
     adicionarEstabelecimento() {
+
         this.estabelecimentosService.salvar(this.estabelecimento)
         .subscribe(() => {
             this.estabelecimento = new Estabelecimento();
             this.toastyService.success('Estabelecimento salvo com sucesso.');
         });
+    }
+
+    private validador() {
+        if (this.estabelecimento.nome === undefined) {
+            this.toastyService.error('O campo nome é obrigatório.');
+            this.campoValido = false;
+            return;
+        }
+
+        if (this.estabelecimento.nome.length < 5) {
+            this.toastyService.error('O campo nome deve ter no minimo 5 caracteres.');
+            this.campoValido = false;
+            return;
+        }
+
+        if (this.estabelecimento.endereco === undefined) {
+            this.toastyService.error('O campo endereço é obrigatório.');
+            this.campoValido = false;
+            return;
+        }
+
+        if (this.estabelecimento.endereco.length < 10) {
+            this.toastyService.error('O campo endereço deve ter no minimo 10 caracteres.');
+            this.campoValido = false;
+            return;
+        }
     }
 
     incluirTelefone(form: NgForm) {

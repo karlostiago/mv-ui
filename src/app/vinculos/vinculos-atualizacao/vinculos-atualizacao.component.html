@@ -11,7 +11,8 @@
                 <p-table [value]="vinculos" [paginator]="true" [rows]="5">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th class="text-col-4 text-center">Profissional</th>
+                            <th class="text-col-1 text-center">Código</th>
+                            <th class="text-col-3 text-center">Profissional</th>
                             <th class="text-col-5 text-center">Estabelecimento</th>
                             <th class="col-action"></th>
                         </tr>
@@ -19,8 +20,9 @@
 
                     <ng-template pTemplate="body" let-vinculo>
                         <tr>
-                            <td class="text-center">{{vinculo.nomeProfissional}}</td>
-                            <td class="text-center">{{vinculo.nomeEstabelecimento}}</td>
+                            <td class="text-center">{{vinculo.id}}</td>
+                            <td class="text-center">{{vinculo.profissional.nome}}</td>
+                            <td class="text-center">{{vinculo.estabelecimento.nome}}</td>
                             <td class="text-center">
                                 <button (click)="showModal(vinculo)" type="button" pButton icon="fa fa-plus" label="Atualizar" pTooltip="Vincular" tooltipPosition="top" class="text-danger"></button>
                             </td>

@@ -29,6 +29,15 @@ export class VinculosService {
             );
     }
 
+    buscarPorId(id: number) {
+        const url = 'http://localhost:8080/vinculos';
+        return this.httpClient.get<Vinculo>(`${url}/${id}`)
+            .pipe(
+                map(data => data),
+                catchError(this.handleError)
+            );
+    }
+
     salvar(profissional: Profissional): Observable<Profissional> {
         const body = JSON.stringify(profissional);
         return this.httpClient.post<Profissional>('http://localhost:8080/vinculos/novo', body, this.httpOptions)
@@ -38,9 +47,9 @@ export class VinculosService {
             );
     }
 
-    atualizar(profissional: Profissional): Observable<Vinculo> {
+    atualizar(id: number, profissional: Profissional): Observable<Vinculo> {
         const url = 'http://localhost:8080/vinculos';
-        return this.httpClient.put<Vinculo>(`${url}/${profissional.id}`, profissional)
+        return this.httpClient.put<Vinculo>(`${url}/${id}`, profissional)
             .pipe(
                 map(data => data)
             );

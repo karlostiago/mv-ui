@@ -15,6 +15,7 @@ export class ProfissionaisCadastroComponent implements OnInit {
 
     profissional: Profissional = new Profissional();
     telefone: Telefone = new Telefone();
+    campoValido = true;
 
     constructor(
         private route: ActivatedRoute,
@@ -42,10 +43,40 @@ export class ProfissionaisCadastroComponent implements OnInit {
     }
 
     salvar() {
-        if (this.editando) {
-            this.atualizarProfissional(this.profissional.id);
-        } else {
-            this.adicionarProfissional();
+        this.validador();
+
+        if (this.campoValido) {
+             if (this.editando) {
+                this.atualizarProfissional(this.profissional.id);
+            } else {
+                this.adicionarProfissional();
+            }
+        }
+    }
+
+    private validador() {
+        if (this.profissional.nome === undefined) {
+            this.toastyService.error('O campo nome é obrigatório.');
+            this.campoValido = false;
+            return;
+        }
+
+        if (this.profissional.nome.length < 5) {
+            this.toastyService.error('O campo nome deve ter no minimo 5 caracteres.');
+            this.campoValido = false;
+            return;
+        }
+
+        if (this.profissional.endereco === undefined) {
+            this.toastyService.error('O campo endereço é obrigatório.');
+            this.campoValido = false;
+            return;
+        }
+
+        if (this.profissional.endereco.length < 10) {
+            this.toastyService.error('O campo endereço deve ter no minimo 10 caracteres.');
+            this.campoValido = false;
+            return;
         }
     }
 

@@ -24,7 +24,7 @@
                             <td class="text-center">{{vinculo.nomeProfissional}}</td>
                             <td class="text-center">{{vinculo.nomeEstabelecimento}}</td>
                             <td class="text-center">
-                                <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/vinculos', vinculo.idProfissional]"></a>
+                                <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/vinculos', vinculo.id]"></a>
                                 <button pButton icon="fa fa-remove" pTooltip="Deletar" tooltipPosition="top" class="text-danger" (click)="confirmarExclusao(vinculo.id)"></button>
                             </td>
                         </tr>

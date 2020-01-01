@@ -43,49 +43,76 @@ export class VinculosAtualizacaoComponent implements OnInit {
     }
 
     showModal(vinculo: Vinculo) {
-       this.profissionaisService.buscarPorCodigo(vinculo.id)
-        .subscribe(profissional => this.profissionalSelecionado = profissional);
 
-       this.vinculoSelecionado = vinculo;
-       this.todosEstabelecimentos();
-       this.display = true;
+        this.todosEstabelecimentos();
+        this.profissionaisService.buscarPorCodigo(vinculo.profissional.id)
+        .subscribe(profissional => {
+            this.profissionalSelecionado = profissional;
+            this.carregaEstabelecimentoNaoAdicionados(this.profissionalSelecionado);
+        });
+
+        this.vinculoSelecionado = vinculo;
+        this.display = true;
+    }
+
+    private carregaEstabelecimentoNaoAdicionados(profissional: Profissional) {
+        this.estabelecimentosService.pesquisar()
+        .subscribe( estabelecimentos => {
+            this.estabelecimentos = estabelecimentos;
+
+            let index = 0;
+            this.profissionalSelecionado.estabelecimentos.forEach(estabelecimento => {
+                this.estabelecimentos.forEach(estab => {
+                    if (estab.id === estabelecimento.id) {
+                        index = this.estabelecimentos.indexOf(estab);
+                        this.estabelecimentos.splice(index, 1);
+                    }
+                });
+            });
+        });
     }
 
     incluir(estabelecimento: Estabelecimento) {
+
         let index = 0;
-        for (const estab of this.profissionalSelecionado.estabelecimentos) {
-            if (estab.nome === this.vinculoSelecionado.nomeEstabelecimento) {
-                this.profissionalSelecionado.estabelecimentos.splice(index, 1);
-                this.profissionalSelecionado.estabelecimentos.push(estabelecimento);
-            }
-            index++;
-        }
+        this.vinculos.forEach(vinculo => {
 
-        this.vinculos = [];
+            this.profissionalSelecionado.estabelecimentos.forEach(estab => {
+                if (estab.id === this.vinculoSelecionado.estabelecimento.id) {
+                    index = this.profissionalSelecionado.estabelecimentos.indexOf(estab);
+                    this.profissionalSelecionado.estabelecimentos.splice(index, 1);
+                    this.profissionalSelecionado.estabelecimentos.push(estabelecimento);
+                    this.atualizar(vinculo, this.profissionalSelecionado);
 
-        this.vinculosService.atualizar(this.profissionalSelecionado)
+                    return;
+                }
+            });
+        });
+    }
+
+    private atualizar(vinculo: Vinculo, profissional: Profissional) {
+
+        this.vinculosService.atualizar(this.vinculoSelecionado.id, this.profissionalSelecionado)
         .subscribe(() => {
-            this.toastyService.success('Profissional atualizado com sucesso.');
+            this.toastyService.success('Vinculo atualizado com sucesso.');
             this.display = false;
-            this.carregarVinculo(this.profissionalSelecionado.id);
+
+            this.vinculos = new Array();
+            this.carregarVinculo(this.vinculoSelecionado.id);
         });
     }
 
     private todosEstabelecimentos() {
         this.estabelecimentosService.pesquisar()
-        .subscribe( estabelecimento => this.estabelecimentos = estabelecimento );
+            .subscribe( estabelecimentos => {
+                this.estabelecimentos = estabelecimentos;
+            });
     }
 
     private carregarVinculo(codigo: number) {
-        this.profissionaisService.buscarPorCodigo(codigo)
-            .subscribe(profissional => {
-                for (const estabelecimento of profissional.estabelecimentos) {
-                    const vinculo: Vinculo = new Vinculo();
-                    vinculo.id = profissional.id;
-                    vinculo.nomeProfissional = profissional.nome;
-                    vinculo.nomeEstabelecimento = estabelecimento.nome;
-                    this.vinculos.push(vinculo);
-                }
+        this.vinculosService.buscarPorId(codigo)
+            .subscribe(vinculo => {
+                this.vinculos.push(vinculo);
             });
     }
 
